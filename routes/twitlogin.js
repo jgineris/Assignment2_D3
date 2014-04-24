@@ -1,10 +1,10 @@
 var Twit = require('twit')
 
 var T = new Twit({
-    consumer_key:         '8fCQaBZbuH3GYC5FrieEVZs7D'
-  , consumer_secret:      'VbMu9cm4NyZWmcz7vV1VBJn1JkXXec3vWy0sihou7JmC1pTDgL'
-  , access_token:         '2445881906-UaJTL9MUkVmuMlWPsancA9r0FPFL5x5ZfzNeC1M'
-  , access_token_secret:  'BPGs0OwIpGxuzswRbLFJcaKLT2nvfAwIuTYJtuf6JXQn3'
+    consumer_key:         'GAbtK8b5o77AN3gD2G0elEu2t'
+  , consumer_secret:      'Kbzt8PdWDSlAWtk7PhgWDNbvfQ7Vj4WDIZX5omedtnAtpZCJcr'
+  , access_token:         '2445881906-bjRJfNKW0TTpSH1GiWSHfWhN4NLfRXgwDhJg0PX'
+  , access_token_secret:  'ZFpoLjoeAY0CPOycSQ804K14708ULhPdn5671xJofWXk8'
 })
 
 exports.view = function(req, res) {

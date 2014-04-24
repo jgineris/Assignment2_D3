@@ -1,8 +1,8 @@
 var graph = require('fbgraph'); 
 
 var conf = {
-    client_id:  	'385717044904347'    
-  , client_secret:  'e1ccaddb495e90c4b9b37ba18ebc169e'
+    client_id:  	'722501874439273'    
+  , client_secret:  '328e8df145d09a5750427ede6c6d449d'
   , scope:          'user_about_me, user_birthday, user_location, friends_relationships'
   , redirect_uri:   'http://localhost:3000/auth/facebook'
 };
@@ -44,7 +44,7 @@ exports.fbauthlogin = function(req, res) {
 
 exports.fbuser = function(req, res){    
     graph.get("/me", function(err, res1) {
-       console.log(res1);
+       //console.log(res1);
        res.render('fblogin', res1);
     });
     
@@ -62,6 +62,11 @@ exports.fbrelationships = function(req, res){
        var engaged = [];
        var domestic = []; //In a domestic partnership
        var rel = []; //In a relationship
+       var open = []; //In an open relationship
+       var compl = []; //It's complicated
+       var sep = []; //Separated
+       var wid = []; //Widowed
+
        var nums = [];
     
        for(var i = 0; i < friends.data.length; i++){
@@ -84,45 +89,86 @@ exports.fbrelationships = function(req, res){
            else if (friends.data[i].relationship_status=="In a domestic partnership"){
            		domestic.push(friends.data[i]);
            }
-           else {
-				undef.push(friends.data[i]);
+           else if (friends.data[i].relationship_status=="In an open relationship"){
+              open.push(friends.data[i]);
            }
-           // console.log("status: "+ friends.data[i].relationship_status);
-
+           else if (friends.data[i].relationship_status=="It's complicated"){
+              compl.push(friends.data[i]);
+           }
+           else if (friends.data[i].relationship_status=="Separated"){
+              sep.push(friends.data[i]);
+           }
+           else if (friends.data[i].relationship_status=="Widowed"){
+              wid.push(friends.data[i]);
+           }
+           else {
+				      undef.push(friends.data[i]);
+           }
        }
         
        var percentage = single.length/friends.data.length;
        nums.push({
+          index: 0,
        		name: 'Single',
        		percent: percentage * 100});
 
        percentage = rel.length/friends.data.length;
         nums.push({
+          index: 1,
        		name: 'In a relationship',
        		percent: percentage * 100});
 
        percentage = married.length/friends.data.length;
         nums.push({
+          index: 2,
        		name: 'Married',
        		percent: percentage * 100});
 
        percentage = engaged.length/friends.data.length;
         nums.push({
+          index: 3,
        		name: 'Engaged',
        		percent: percentage * 100});
 
- 	   percentage = divorced.length/friends.data.length;
+ 	     percentage = divorced.length/friends.data.length;
         nums.push({
+          index: 4,
        		name: 'Divorced',
        		percent: percentage * 100});
 
        percentage = domestic.length/friends.data.length;
         nums.push({
+          index: 5,
        		name: 'In a domestic partnership',
        		percent: percentage * 100});
 
+      percentage = open.length/friends.data.length;
+        nums.push({
+          index: 6,
+          name: 'In an open relationship',
+          percent: percentage * 100});
+
+        percentage = compl.length/friends.data.length;
+        nums.push({
+          index: 7,
+          name: 'It\'s complicated',
+          percent: percentage * 100});
+
+        percentage = sep.length/friends.data.length;
+        nums.push({
+          index: 8,
+          name: 'Separated',
+          percent: percentage * 100});
+
+        percentage = wid.length/friends.data.length;
+        nums.push({
+          index: 9,
+          name: 'Widowed',
+          percent: percentage * 100});
+
        percentage = undef.length/friends.data.length;
         nums.push({
+          index: 10,
        		name: 'Unspecified',
        		percent: percentage * 100});
 
