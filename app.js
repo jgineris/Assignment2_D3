@@ -40,6 +40,7 @@ app.get('/relationships', fblogin.fbrelationships);
 
 //Twitter
 app.get('/auth/twitter', twitlogin.twitauthlogin);
+app.get('/twitlogin', twitlogin.view);
 
 //set environment ports and start application
 app.set('port', process.env.PORT || 3000);

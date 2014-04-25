@@ -8,9 +8,9 @@ var conf = {
 };
 
 
-exports.view = function(req, res) {
-	res.render('fblogin');
-}
+// exports.view = function(req, res) {
+// 	res.render('fblogin');
+// }
 
 exports.fbauthlogin = function(req, res) {
 
@@ -108,67 +108,67 @@ exports.fbrelationships = function(req, res){
         
        var percentage = single.length/friends.data.length;
        nums.push({
-          index: 0,
+          index: "i0",
        		name: 'Single',
        		percent: percentage * 100});
 
        percentage = rel.length/friends.data.length;
         nums.push({
-          index: 1,
+          index: "i1",
        		name: 'In a relationship',
        		percent: percentage * 100});
 
        percentage = married.length/friends.data.length;
         nums.push({
-          index: 2,
+          index: "i2",
        		name: 'Married',
        		percent: percentage * 100});
 
        percentage = engaged.length/friends.data.length;
         nums.push({
-          index: 3,
+          index: "i3",
        		name: 'Engaged',
        		percent: percentage * 100});
 
  	     percentage = divorced.length/friends.data.length;
         nums.push({
-          index: 4,
+          index: "i4",
        		name: 'Divorced',
        		percent: percentage * 100});
 
        percentage = domestic.length/friends.data.length;
         nums.push({
-          index: 5,
+          index: "i5",
        		name: 'In a domestic partnership',
        		percent: percentage * 100});
 
       percentage = open.length/friends.data.length;
         nums.push({
-          index: 6,
+          index: "i6",
           name: 'In an open relationship',
           percent: percentage * 100});
 
         percentage = compl.length/friends.data.length;
         nums.push({
-          index: 7,
+          index: "i7",
           name: 'It\'s complicated',
           percent: percentage * 100});
 
         percentage = sep.length/friends.data.length;
         nums.push({
-          index: 8,
+          index: "i8",
           name: 'Separated',
           percent: percentage * 100});
 
         percentage = wid.length/friends.data.length;
         nums.push({
-          index: 9,
+          index: "i9",
           name: 'Widowed',
           percent: percentage * 100});
 
        percentage = undef.length/friends.data.length;
         nums.push({
-          index: 10,
+          index: "i10",
        		name: 'Unspecified',
        		percent: percentage * 100});
 

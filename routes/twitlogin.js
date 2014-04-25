@@ -8,7 +8,8 @@ var T = new Twit({
 })
 
 exports.view = function(req, res) {
-  res.render('twitlogin');
+  console.log("HERE");
+  res.render('twitlogin', res);
 }
 //
 //  tweet 'hello world!'
@@ -54,10 +55,11 @@ T.get('users/suggestions/:slug', { slug: 'funny' }, function (err, reply) {
 
 exports.twitauthlogin = function(req, res) {
   T.get('statuses/user_timeline', function(err, res1){
-        console.log(res1);  
+        // console.log(res1);  
         var data = [];
         data = res1;
         res.render('twitlogin', data[0]);
+        // res.redirect('twitlogin', data[0]);
     });
 
 }
