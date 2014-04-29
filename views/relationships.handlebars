@@ -56,7 +56,7 @@
           maxRadius = 12;
 
       var n = 100, // total number of nodes
-          m = 10; // number of distinct clusters
+          m = 10; // number of distinct clusters (0 based so it's actually 11)
 
       var color = d3.scale.category20()
           .domain(d3.range(m));
@@ -84,14 +84,18 @@
         
         if(index >= currentPercent)
         {
-          c = c + 1;         
+          if(c <= (m-1)) //Don't want to add an extra one
+          {
+            c = c + 1;
+          }
+                   
           // console.log("c is " + c + " adding " + percent[c]); 
           currentPercent = currentPercent + percent[c];
         }
        
         // var d = {cluster: i, radius: r};
         var d = {cluster: c, radius: r};
-        console.log("d cluster " + d.cluster + " radius " + d.radius);
+        // console.log("d cluster " + d.cluster + " radius " + d.radius);
         if (!clusters[c] || (r > clusters[c].radius)) 
         {
           clusters[c] = d;
